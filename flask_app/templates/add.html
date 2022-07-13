@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='edit_style.css') }}">
+    <title>Foodie Faves</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/dashboard" id="home">Home</a>
+        <a href="#" id="about">About</a>
+        <a href="#" id="help">Help</a>
+        <a href="#" id="faqs">FAQs</a>
+        <a href="/user/logout" id="logout">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Add a New Fave Bar or Restaurant</h1>
+        <div class="show_form">
+            {% with messages = get_flashed_messages(category_filter=['create_restaurant']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/restaurant/create", method="post", id="form">
+                <div>
+                    <label class = "label">
+                        Name:
+                        <input type="text" name="name">
+                    </label>
+                </div>
+                <div>
+                    <label class = "label">
+                        Street Address:
+                        <input type="text" name="street_address">
+                    </label>
+                </div>
+                <div>
+                    <label class = "label">
+                        Neighborhood:
+                        <input type="text" name="neighborhood">
+                    </label>
+                </div>
+                <div>
+                    <label class = "label">
+                        Review:
+                        <textarea name="review" cols="50" rows="5"></textarea>
+                    </label>
+                </div>
+                <div>
+                    <label for="yes">Yes</label>
+                    <input type="radio" name="has_food" value="yes" id="yes">
+                </div>
+                <div>
+                    <label for="no">No</label>
+                    <input type="radio" name="has_food" value="no" id="no">
+                </div>
+                <div>
+                    <input class ="button" type="submit" value="Add Fave">
+                </div> 
+            </form>
+        </div>
+    </div>
+</body>
+</html>

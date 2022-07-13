@@ -1,0 +1,25 @@
+[REQUIRED] Name: Rachel
+[REQUIRED] Project Title: Favorite Bars and Restaurants
+[REQUIRED] Project Stack: Python
+[REQUIRED] GitHub Repo Link: https://github.com/rshaywood/cd_solo_project
+
+[REQUIRED] Project Description: A site where you can keep track of restaurants and bars that you have previously visited and have the ability to write a brief description/review of each. You can save them to your profile and also create a wish list of places you hope to visit.
+
+[REQUIRED] New Programming Concept(s) I'm Planning to Learn: Bootstrap, Deployment, many/many relationship, and/or incorporate Google Maps and Twitter APIs
+
+Week 1 Features (to show at Review during Week 2)
+- One to many relationship
+- CRUD
+- Project is on GitHub
+- Data validation
+- Protected routes
+- Start of styling - CSS/Boostrap
+
+Week 2 Features (to show at first office hour/lecture of Week 3)
+- Finish CSS work - Bootstrap
+- Deployment
+
+
+Product Backlog (If I have more time after completing my MVP, I'll start to work on...)
+- Display restaurants' Twitter feeds
+- Allow user to search for a business using Google Maps API

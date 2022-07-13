@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="#" id="about">About</a>
+        <a href="#" id="help">Help</a>
+        <a href="#" id="faqs">FAQs</a>
+    </div>
+    <h1>Welcome to Foodie Faves</h1>
+    <h2>A site where you can save all your favorite bars and restaurants and create a wish-list of places you're dying to visit!</h2>
+    <div class="login">
+        <form action="/user/login", method="post">
+            <h2>Log In</h2>
+            {% with messages = get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p><label for="email">Email: </label></p>
+            <p><input type="email" name="email"></p>
+            <p><label for="password">Password: </label></p>
+            <p><input type="password" name="password"></p>
+            <p><input type="submit" value="Log In!" class="button"></p>
+        </form>
+    </div>
+    <a href="/user/register">New to the site? Click here to create an account.</a>
+</body>
+</html>

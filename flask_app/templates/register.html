@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/" id="home">Home</a>
+        <a href="#" id="about">About</a>
+        <a href="#" id="help">Help</a>
+        <a href="#" id="faqs">FAQs</a>
+    </div>
+    <div class="register">
+        <form action="/user/create", method="post">
+            <h2>Create Account</h2>
+            {% with messages = get_flashed_messages(category_filter=['register']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p>
+                <label>
+                    First Name: 
+                    <p><input type="text" name="first_name"></p>
+                </label>
+            </p>        
+            <p>
+                <label>
+                    Last Name:
+                    <p><input type="text" name="last_name"></p>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Email:
+                    <p><input type="text" name="email"></p>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Password:
+                    <p><input type="password" name="password"></p>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Confirm Password: 
+                    <p><input type="password" name="confirm_password"></p>
+                </label>
+            </p>
+            <input type="submit" value="Sign Up" class="button">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='read_style.css') }}">
+    <title>Foodie Faves</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/dashboard" id="home">Home</a>
+        <a href="#" id="about">About</a>
+        <a href="#" id="help">Help</a>
+        <a href="#" id="faqs">FAQs</a>
+        <a href="/user/logout" id="logout">Logout</a>
+    </div>
+    <header class="header">
+        <div class="welcome">
+            <h2>Your Wishlist</h2>
+        </div>
+    </header>
+    <div class="container">
+        <div>
+            <h3>Places you're hungry to check out!</h3>
+            <table id="restaurants">
+                <tr>
+                    <th>Name</th>
+                    <th>Street Address</th>
+                    <th>Neighborhood</th>
+                    <th>Actions</th>
+                </tr>
+                {% for restaurant in all_restaurants %}    
+                <tr>
+                    <td>{{restaurant.name}}</td>
+                    <td>{{restaurant.street_address}}</td>
+                    <td>{{restaurant.neighborhood}}</td>
+                    <td>
+                        <a href="/restaurant/display/{{restaurant.id}}">Eaten here already? Add to Faves</a>
+                    </td>
+                {% endfor %}
+                </tr> 
+            </table>
+            <a href="/restaurant/form", method="post">
+                <button>Add a Bar or Restaurant to Your Wishlist</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

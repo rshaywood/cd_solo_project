@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='read_style.css') }}">
+    <title>Foodie Faves</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/dashboard" id="home">Home</a>
+        <a href="#" id="about">About</a>
+        <a href="#" id="help">Help</a>
+        <a href="#" id="faqs">FAQs</a>
+        <a href="/user/logout" id="logout">Logout</a>
+    </div>
+    <header class="header">
+        <div class="welcome">
+            <h2>Welcome back, {{this_user.first_name}}!</h2>
+        </div>
+    </header>
+    <div class="container">
+        <div>
+            <h3>Here's a list of all your favorite bars and restaurants</h3>
+            <table id="restaurants">
+                <tr>
+                    <th>Name</th>
+                    <th>Street Address</th>
+                    <th>Neighborhood</th>
+                    <th>Review</th>
+                    <th>Do They Serve Food?</th>
+                    <th>Actions</th>
+                </tr>
+                {% for restaurant in all_restaurants %}    
+                <tr>
+                    <td>{{restaurant.name}}</td>
+                    <td>{{restaurant.street_address}}</td>
+                    <td>{{restaurant.neighborhood}}</td>
+                    <td>{{restaurant.review}}</td>
+                    <td>{{restaurant.has_food}}</td>
+                    <td>
+                        <a href="/restaurant/display/{{restaurant.id}}">view</a>
+                        <a href="/restaurant/edit/{{restaurant.id}}">edit</a>
+                        <a href="/restaurant/delete/{{restaurant.id}}">delete</a>
+                    </td>
+                {% endfor %}
+                </tr> 
+            </table>
+            <a href="/restaurant/form", method="post">
+                <button>Add a New Bar or Restaurant</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

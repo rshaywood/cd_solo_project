@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='edit_style.css') }}">
+    <title>Foodie Faves</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/dashboard" id="home">Home</a>
+        <a href="#" id="about">About</a>
+        <a href="#" id="help">Help</a>
+        <a href="#" id="faqs">FAQs</a>
+        <a href="/user/logout" id="logout">Logout</a>
+    </div>
+    <h1>Edit {{one_restaurant.name}}</h1>
+    <div class="container">
+        <div class="show_form">
+            {% with messages = get_flashed_messages(category_filter=['create_restaurant']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/restaurant/edit", method="post" id ="form">
+                    <input type="hidden" name="id" value="{{one_restaurant.id}}">
+                    <label class = "label">
+                        Name:
+                        <input type="text" name="name" value="{{one_restaurant.name}}">
+                    </label>
+                    <label class = "label">
+                        Street Address:
+                        <input type="text" name="street_address" value="{{one_restaurant.street_address}}">
+                    </label>
+                    <label class = "label">
+                        Neighborhood:
+                        <input type="text" name="neighborhood" value="{{one_restaurant.neighborhood}}">
+                    </label>
+                    <label class = "label">
+                        Review:
+                        <textarea name="review" cols="50" rows="5">{{one_restaurant.review}}</textarea>
+                    </label>
+                    <p>Do they serve food?</p>
+                    {% if one_restaurant.has_food == 'Yes' %}
+                    <label for="yes">Yes</label>
+                    <input type="radio" name="has_food" id="yes" value="Yes" checked>
+                    </label>
+                    <label for="no">No</label>
+                    <input type="radio" name="has_food" id="no" value="No">
+                    {% else %}
+                    <label for="yes">Yes</label>
+                    <input type="radio" name="has_food" id="yes" value="Yes" checked>
+                    </label>
+                    <label for="no">No</label>
+                    <input type="radio" name="has_food" id="no" value="No" checked>
+                    {% endif %}
+                    <a href="/dashboard">
+                        <input class ="button" type="submit" value="Update {{one_restaurant.name}}">
+                    </a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
