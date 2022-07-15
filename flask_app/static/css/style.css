@@ -1,0 +1,8 @@
+body {
+    font-family: 'Cabin', sans-serif;
+}
+
+body {
+    background-image: url("foodie_faves/flask_app/static/assets/overhead_food.jpg");
+    height: 100vh;
+    }
