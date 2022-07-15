@@ -1,13 +1,22 @@
 body{
     color: #494449;
-    background-color: #EEEFEB;
     font-family: 'Abel', sans-serif;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-image: url('https://img.freepik.com/free-vector/hand-drawn-food-elements_1411-48.jpg?t=st=1657908903~exp=1657909503~hmac=387656b95642f79e1b7a5e55e39149a54709616e5e5deb3ff535ce1a0bf761cf&w=900'); 
+    height: 100vh;
+    overflow: hidden;
+}
+
+.overlay {
+    background-color: rgba(238,239,235,.85);
+    overflow: hidden;
+    height: 100%;
 }
 
 table {
     background-color: #8E9189;
-    /* background-color: #857F74; */
-    /* border-collapse: collapse; */
+
 }
 
 tr, th{
@@ -16,4 +25,20 @@ tr, th{
 
 .actions {
     color: #DDEAC1;
+}
+
+#button {
+    border: none;
+    height: 2.5em;
+    border-radius: 5px;
+    background-color: #8E9189;
+    color: #EEEFEB;
+}
+
+h2 {
+    font-family: 'Limelight', cursive;
+}
+
+#background {
+
 }

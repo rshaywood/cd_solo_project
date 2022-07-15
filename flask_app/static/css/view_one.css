@@ -14,14 +14,12 @@ body{
     height: 100%;
 }
 
-h2 {
-    font-family: 'Limelight', cursive;
+h4, h2 {
+    font-weight: 600;
 }
 
-#button {
-    border: none;
-    height: 2.5em;
-    border-radius: 5px;
+.card {
     background-color: #8E9189;
     color: #EEEFEB;
+    border: 1px solid #494449;
 }

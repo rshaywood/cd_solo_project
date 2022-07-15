@@ -1,0 +1,25 @@
+body {
+    font-family: 'Abel', sans-serif;
+}
+
+h1 {
+    font-family: 'Limelight', cursive;
+}
+
+#login {
+    background-color: #8E9189;
+    color:#EEEFEB;
+}
+
+#loginbutton {
+    border: none;
+    height: 2.5em;
+    border-radius: 5px;
+    background-color: #EEEFEB;
+    color: #494449;
+}
+
+#registerLink {
+    color: #DDEAC1;
+}
+
