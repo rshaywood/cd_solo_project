@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 </head>
-<body class="bg-image" style="background-size: cover; background-repeat: no-repeat; background-image: url('https://media.istockphoto.com/photos/dinner-table-overhead-top-view-picture-id486942688'); height: 100vh;">
+<body class="bg-image" style="background-size: cover; background-repeat: no-repeat; background-image: url('https://images.pexels.com/photos/4551521/pexels-photo-4551521.jpeg'); height: 100vh;">
+
     
+    <!-- https://media.istockphoto.com/photos/dinner-table-overhead-top-view-picture-id486942688 -->
 <!-- Navigation Bar -->
 
     <nav class="navbar navbar-expand-lg bg-light">
@@ -46,8 +48,7 @@
 <!-- Header, Subheader -->
 
     <div class="container my-3 p-5">
-        
-        <form action="/user/login" , method="post" class="text-center border-0 border-secondary rounded-3 p-3 w-50 mx-auto opacity-75" id="login">
+        <form action="/user/login" , method="post" id="login"class="text-center border-0 border-secondary rounded-3 p-3 w-50 mx-auto">
             <h1 class="text-center mt-5 mb-3">Welcome to Foodie Faves</h1>
             <h4 class="text-center mb-4">A site where you can save all your favorite bars and restaurants and create a wishlist of places you're HUNGRY
                 to visit!
@@ -68,7 +69,7 @@
                 <label for="password" class="form-label fs-5" >Password: </label>
                 <input type="password" name="password" class="form-control">
             </div>
-            <button type="submit" class="btn fs-5" id="loginbutton">Log In!</button>
+            <button type="submit" class="btn fs-5" id="loginbutton">Log In</button>
             <div class="text-center mt-3">
                 <a href="/user/register" class="text-center fs-5" id="registerLink">New to the site? Click here to create an account.</a>
             </div>
@@ -80,5 +81,4 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
 </body>
-
 </html>
