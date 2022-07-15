@@ -2,11 +2,6 @@ body {
     font-family: 'Abel', sans-serif;
 }
 
-body {
-    background-image: url("foodie_faves/flask_app/static/assets/overhead_food.jpg");
-    height: 100vh;
-    }
-
 #login {
     background-color: #494449;
     color: #EEEFEB;
@@ -15,6 +10,7 @@ body {
 #loginbutton {
     background-color: #EEEFEB;
     border:1px solid #494449;
+    border-radius: 10px;
 }
 
 #registerLink {

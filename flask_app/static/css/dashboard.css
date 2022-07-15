@@ -1,0 +1,19 @@
+body{
+    color: #494449;
+    background-color: #EEEFEB;
+    font-family: 'Abel', sans-serif;
+}
+
+table {
+    background-color: #8E9189;
+    /* background-color: #857F74; */
+    /* border-collapse: collapse; */
+}
+
+tr, th{
+    color: #EEEFEB;
+}
+
+.actions {
+    color: #DDEAC1;
+}
