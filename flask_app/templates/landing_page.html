@@ -37,7 +37,7 @@
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                    <button class="btn" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -47,12 +47,12 @@
 
     <div class="container my-3 p-5">
         
-        <form action="/user/login" , method="post" class="text-center border-0 border-secondary rounded-3 p-3 w-50 mx-auto bg-dark opacity-75">
-            <h1 class="text-center mt-5 mb-3 text-light">Welcome to Foodie Faves</h1>
-            <h4 class="text-center mb-5 text-light">A site where you can save all your favorite bars and restaurants and create a wishlist of places you're HUNGRY
+        <form action="/user/login" , method="post" class="text-center border-0 border-secondary rounded-3 p-3 w-50 mx-auto opacity-75" id="login">
+            <h1 class="text-center mt-5 mb-3">Welcome to Foodie Faves</h1>
+            <h4 class="text-center mb-4">A site where you can save all your favorite bars and restaurants and create a wishlist of places you're HUNGRY
                 to visit!
             </h4>
-            <h2>Let's Get Started</h2>
+            <h2 class="text-light mb-3">Let's Get Started</h2>
             {% with messages = get_flashed_messages(category_filter=['login']) %}
             {% if messages %}
             {% for message in messages %}
@@ -61,16 +61,16 @@
             {% endif %}
             {% endwith %}
             <div class="mb-3">
-                <label for="email" class="form-label text-light  fs-5" >Email: </label>
+                <label for="email" class="form-label fs-5" >Email: </label>
                 <input type="email" name="email" class="form-control">
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label text-light  fs-5" >Password: </label>
+                <label for="password" class="form-label fs-5" >Password: </label>
                 <input type="password" name="password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-primary  fs-5">Log In!</button>
+            <button type="submit" class="btn fs-5" id="loginbutton">Log In!</button>
             <div class="text-center mt-3">
-                <a href="/user/register" class="text-center fs-5">New to the site? Click here to create an account.</a>
+                <a href="/user/register" class="text-center fs-5" id="registerLink">New to the site? Click here to create an account.</a>
             </div>
         </form>
     </div>
