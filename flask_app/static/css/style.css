@@ -1,8 +1,22 @@
 body {
-    font-family: 'Cabin', sans-serif;
+    font-family: 'Abel', sans-serif;
 }
 
 body {
     background-image: url("foodie_faves/flask_app/static/assets/overhead_food.jpg");
     height: 100vh;
     }
+
+#login {
+    background-color: #494449;
+    color: #EEEFEB;
+}
+
+#loginbutton {
+    background-color: #EEEFEB;
+    border:1px solid #494449;
+}
+
+#registerLink {
+    color: #DDEAC1;
+}
