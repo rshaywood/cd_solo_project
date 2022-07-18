@@ -25,6 +25,8 @@ class Restaurant:
 
     @classmethod
     def add_restaurant(cls, data):
+        if not cls.validate_restaurant_info(data):
+            return False
         query = """
         INSERT INTO restaurants (name, street_address, neighborhood, review, has_food, user_id) 
         VALUES (%(name)s, %(street_address)s, %(neighborhood)s, %(review)s, %(has_food)s, %(user_id)s)
@@ -58,6 +60,34 @@ class Restaurant:
         ;"""
         results = connectToMySQL(cls.db).query_db(query, data)
         return cls(results[0])
+
+    @classmethod
+    def get_all_restaurants_with_users(cls):
+        query = """
+        SELECT *
+        FROM restaurants
+        LEFT JOIN users on restaurants.user_id = users.id
+        ;"""
+        result = connectToMySQL(cls.db).query_db(query)
+        # print("^^^^^^^^^^^^^^^^^^^^^", result)
+        restaurants = []
+        if not result:
+            return result
+        for row in result:
+            new_restaurant = cls(row)
+            this_diner = {
+                'id': row['users.id'],
+                'first_name': row['first_name'],
+                'last_name': row['last_name'],
+                'email': row['email'],
+                'password': row['password'],
+                'created_at': row['users.created_at'],
+                'updated_at': row['users.updated_at'],
+            }
+            new_restaurant.diner = user.User(this_diner)
+            restaurants.append(new_restaurant)
+        # print('****^^*(&&*(&&(&^&^*&^*^', restaurants)
+        return restaurants
 
 # UPDATE - SQL
 
@@ -97,5 +127,8 @@ class Restaurant:
             is_valid= False
         if len(restaurant['review']) < 3:
             flash("Review of restaurant must be at least 3 characters.","create_restaurant")
-            is_valid= False         
+            is_valid= False
+        if "has_food" not in restaurant:
+            flash("Does this establishment serve food?", 'create_restaurant')
+            is_valid = False  
         return is_valid

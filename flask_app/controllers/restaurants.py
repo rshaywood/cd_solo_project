@@ -38,6 +38,12 @@ def view_dashboard():
     this_user = user.User.get_user_by_id(session['user_id'])
     return render_template('dashboard.html', all_restaurants = all_restaurants, this_user=this_user)
 
+@app.route('/restaurant/all_users_restaurants')
+def see_every_restaurant():
+    every_restaurant = restaurant.Restaurant.get_all_restaurants_with_users()
+    this_user = user.User.get_user_by_id(session['user_id'])
+    return render_template('all_restaurants.html', every_restaurant=every_restaurant, this_user=this_user)
+
 @app.route('/restaurant/display/<int:id>')
 def display_one_restaurant(id):
     data = {"id":id}
@@ -53,12 +59,12 @@ def display_edit_restaurant_form(id):
     this_user = user.User.get_user_by_id(session['user_id'])
     return render_template('edit.html', one_restaurant = restaurant.Restaurant.get_restaurant_by_id(data), this_user=this_user)
 
-@app.route('/restaurant/edit', methods=['POST'])
-def update_restaurant():
+@app.route('/restaurant/<int:id>', methods=['POST'])
+def update_restaurant(id):
     if "user_id" not in session:
         return redirect('/')
     if not restaurant.Restaurant.validate_restaurant_info(request.form):
-        return redirect('/restaurant/edit')
+        return redirect(f'/restaurant/edit/{id}')
     data = {
         "name": request.form['name'],
         "street_address": request.form['street_address'],
