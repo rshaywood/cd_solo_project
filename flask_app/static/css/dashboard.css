@@ -27,7 +27,7 @@ tr, th{
     color: #DDEAC1;
 }
 
-#button {
+#button, #btn {
     border: none;
     height: 2.5em;
     border-radius: 5px;
