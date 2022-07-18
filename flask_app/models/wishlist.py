@@ -24,7 +24,7 @@ class Wishlist:
 # CREATE - SQL
 
     @classmethod
-    def add_restaurant(cls, data):
+    def add_rest(cls, data):
         query = """
         INSERT INTO wishlist (name, street_address, neighborhood, user_id) 
         VALUES (%(name)s, %(street_address)s, %(neighborhood)s, %(user_id)s)
@@ -76,7 +76,7 @@ class Wishlist:
 # VALIDATE - SQL
 
     @staticmethod
-    def validate_restaurant_info(restaurant):
+    def validate_rest_info(restaurant):
         is_valid = True
         query = "SELECT * FROM wishlist WHERE id = %(id)s;"
         results = connectToMySQL(Wishlist.db).query_db(query, restaurant)

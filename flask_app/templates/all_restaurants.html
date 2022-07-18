@@ -12,6 +12,8 @@
     <title>Foodie Faves</title>
 </head>
 <body>
+<!-- <body class="bg-image" id="background" style="">     -->
+    
 <!-- Navigation Bar -->
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #8E9189;">
@@ -48,8 +50,7 @@
     <div class="container my-3">
         <header class="my-3">
             <div class="welcome">
-                <h2>Your Wishlist</h2>
-                <h4>Places you're hungry to check out!</h4>
+                <h2>Here are restaurants that you and other foodies have submitted as faves</h2>
             </div>
         </header>
         <div class="w-75">
@@ -58,24 +59,34 @@
                     <th>Name</th>
                     <th>Street Address</th>
                     <th>Neighborhood</th>
+                    <th>Review</th>
+                    <th>Do They Serve Food?</th>
                     <th>Actions</th>
                 </tr>
-                {% for restaurant in all_restaurants %}    
+                {% for restaurant in every_restaurant %}    
                 <tr>
                     <td>{{restaurant.name}}</td>
                     <td>{{restaurant.street_address}}</td>
                     <td>{{restaurant.neighborhood}}</td>
+                    <td>{{restaurant.review}}</td>
+                    <td>{{restaurant.has_food}}</td>
                     <td>
                         <a href="/restaurant/display/{{restaurant.id}}" class="actions">view</a>
-                        <a href="#" class="actions">eaten here already? Add to Faves</a>
+                        {% if restaurant.user_id == session.user_id %}
+                        <a href="/restaurant/edit/{{restaurant.id}}" class="actions">edit</a>
+                        {% endif %}
+                        {% if restaurant.user_id == session.user_id %}
+                        <a href="/restaurant/delete/{{restaurant.id}}" class="actions">delete</a>
+                        {% endif %}
                     </td>
                 {% endfor %}
                 </tr> 
             </table>
-            <a href="/wishlist/form", method="post">
-                <button class="button" id="btn">Add a Bar or Restaurant to Your Wishlist</button>
-            </a>
+            <!-- <a href="/restaurant/form", method="post">
+                <button class="button" id="button">Add a New Bar or Restaurant</button>
+            </a> -->
         </div>
     </div>
+</div>
 </body>
 </html>

@@ -8,15 +8,15 @@ bcrypt = Bcrypt(app)
 # CREATE - ROUTES
 
 @app.route('/wishlist/form')
-def new_restaurant_form():
+def new_rest_form():
     this_user = user.User.get_user_by_id(session['user_id'])
-    return render_template('add_to_wishlist.html', this_user=this_user)
+    return render_template('wishlist_add.html', this_user=this_user)
 
 @app.route('/wishlist/create', methods=['POST'])
-def add_restaurant():
+def add_rest():
     if "user_id" not in session:
         return redirect('/')
-    if not wishlist.Wishlist.validate_restaurant_info(request.form):
+    if not wishlist.Wishlist.validate_rest_info(request.form):
         return redirect('/wishlist/form')
     data = {
         "name": request.form['name'],
@@ -24,7 +24,7 @@ def add_restaurant():
         "neighborhood": request.form['neighborhood'],
         "user_id" : session['user_id']
     }
-    wishlist.Wishlist.add_restaurant(data)
+    wishlist.Wishlist.add_rest(data)
     return redirect('/wishlist')
 
 # READ - ROUTES

@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_edit.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
     <title>Foodie Faves</title>
 </head>
 <body>
+
 <!-- Navigation Bar -->
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #8E9189;">
@@ -39,43 +40,46 @@
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn" type="submit">Search</button>
+                <button class="button" id="button" type="submit">Search</button>
             </form>
         </div>
     </div>
 </nav>
 <div class="overlay">
     <div class="container my-3">
-        <header class="my-3">
-            <div class="welcome">
-                <h2>Your Wishlist</h2>
-                <h4>Places you're hungry to check out!</h4>
-            </div>
-        </header>
-        <div class="w-75">
-            <table class="table table-hover table-borderless rounded-3" id="restaurants">
-                <tr>
-                    <th>Name</th>
-                    <th>Street Address</th>
-                    <th>Neighborhood</th>
-                    <th>Actions</th>
-                </tr>
-                {% for restaurant in all_restaurants %}    
-                <tr>
-                    <td>{{restaurant.name}}</td>
-                    <td>{{restaurant.street_address}}</td>
-                    <td>{{restaurant.neighborhood}}</td>
-                    <td>
-                        <a href="/restaurant/display/{{restaurant.id}}" class="actions">view</a>
-                        <a href="#" class="actions">eaten here already? Add to Faves</a>
-                    </td>
-                {% endfor %}
-                </tr> 
-            </table>
-            <a href="/wishlist/form", method="post">
-                <button class="button" id="btn">Add a Bar or Restaurant to Your Wishlist</button>
-            </a>
+        <h1>Add a Bar or Restaurant To Your Wishlist</h1>
+        <div class="show_form">
+            {% with messages = get_flashed_messages(category_filter=['create_restaurant']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/wishlist/create", method="post", id="form">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <div class="mb-3">
+                            <label class ="form-label" for="name">Name:</label>
+                            <input class ="form-control" type="text" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label class ="form-label" for="street_address">Street Address</label>
+                            <input class ="form-control" type="text" name="street_address">
+                        </div>
+                        <div class="mb-3">
+                            <label class ="form-label" for="neighborhood">Neighborhood:</label>
+                            <input class ="form-control" type="text" name="neighborhood">
+                        </div>
+
+                        <a href="/wishlist">
+                            <input class ="button" id="button" type="submit" value="Add To Wishlist">
+                        </a>
+                    </div>
+                </div> 
+            </form>
         </div>
     </div>
+</div>
 </body>
 </html>
